@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mubtasim Muhaimin Badhon</title>
+<link rel="shortcut icon" href="imge/favicon.png" type="image/x-icon">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- External CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+  <!-- Root wrapper -->
+  <div class="wrap" role="main" aria-labelledby="main-heading">
+    <header>
+      <a class="brand" href="#" aria-label="Homepage">
+        <div class="logo" aria-hidden="true">MMB</div>
+        <div>
+          <h1 id="main-heading">Mubtasim Muhaimin Badhon</h1>
+          <p>Clean UI · Responsive · Accessible</p>
+        </div>
+      </a>
+
+      <nav class="nav" aria-label="Top navigation">
+        <button class="btn" id="theme-toggle" aria-pressed="false" title="Toggle light / dark theme">Toggle theme</button>
+        <a class="btn" href="#" role="button">Docs</a>
+        <button class="btn cta" id="cta" title="Primary action">Get started</button>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="card" aria-labelledby="hero-title">
+        <svg class="bg-deco" viewBox="0 0 600 600" aria-hidden="true">
+          <defs>
+            <linearGradient id="g1" x1="0" x2="1">
+              <stop offset="0" stop-color="#7c5cff"/>
+              <stop offset="1" stop-color="#00c2ff"/>
+            </linearGradient>
+          </defs>
+          <circle cx="120" cy="120" r="160" fill="url(#g1)"></circle>
+        </svg>
+
+        <h2 id="hero-title">Design that feels intentional</h2>
+        <p>Balanced spacing, calm colors, and subtle motion — a minimal aesthetic template you can adapt for portfolio, product landing pages, and UI experiments.</p>
+
+        <div class="badges" aria-hidden="true">
+          <span class="chip">Responsive</span>
+          <span class="chip">Accessible</span>
+          <span class="chip">No frameworks</span>
+          <span class="chip">Theme-ready</span>
+        </div>
+
+        <div style="margin-top:22px; display:flex; gap:12px; align-items:center;">
+          <a class="btn" href="#examples">Explore</a>
+          <button class="btn" onclick="alert('Replace this with your action!')">Custom action</button>
+        </div>
+      </div>
+
+      <!-- profile / info card -->
+      <aside class="card" aria-labelledby="profile-title">
+        <div class="profile">
+          <div class="avatar" aria-hidden="true">MMB</div>
+          <div class="meta">
+            <h3 id="profile-title">Mubtasim Muhaimin Badhon</h3>
+            <p class="small muted">A compact visual system for quick prototypes and landing pages.</p>
+            <div style="margin-top:12px; display:flex; gap:8px;">
+              <small class="muted small">Version 1.0</small>
+              <small class="muted small">·</small>
+              <small class="muted small">Built 2025</small>
+            </div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Examples / Grid -->
+    <section id="examples">
+      <div class="grid">
+        <article class="mini-card" tabindex="0" aria-labelledby="c1">
+          <h4 id="c1">Minimal Project</h4>
+          <p class="muted">A compact project card with title, short description, and a subtle elevation for focus states.</p>
+        </article>
+
+        <article class="mini-card" tabindex="0" aria-labelledby="c2">
+          <h4 id="c2">Photography</h4>
+          <p class="muted">Use large imagery behind the glass card; crop and center for best results on different aspect ratios.</p>
+        </article>
+
+        <article class="mini-card" tabindex="0" aria-labelledby="c3">
+          <h4 id="c3">Blog Post</h4>
+          <p class="muted">Readable typography and comfortable line length improves time on page and clarity for longform writing.</p>
+        </article>
+
+        <article class="mini-card" tabindex="0" aria-labelledby="c4">
+          <h4 id="c4">Product</h4>
+          <p class="muted">Pair the layout with micro-interactions on CTAs to increase conversion without being loud.</p>
+        </article>
+
+        <article class="mini-card" tabindex="0" aria-labelledby="c5">
+          <h4 id="c5">Case Study</h4>
+          <p class="muted">Highlight results using concise stats and a prominent pull-quote block for social sharing.</p>
+        </article>
+
+        <article class="mini-card" tabindex="0" aria-labelledby="c6">
+          <h4 id="c6">Contact</h4>
+          <p class="muted">A small contact form and a clear primary action are enough for most landing pages.</p>
+        </article>
+      </div>
+    </section>
+
+    <footer>
+      <div class="muted small">© <span id="year"></span> MMB. All rights reserved.</div>
+      <div>
+        <a class="link" href="#" aria-label="Source code">Source</a>
+        <span class="muted small"> · </span>
+        <a class="link" href="#" aria-label="Privacy">Privacy</a>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Set year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Theme toggle with storage
+    const root = document.documentElement;
+    const toggle = document.getElementById('theme-toggle');
+
+    function applyTheme(theme){
+      if(theme === 'dark') {
+        root.setAttribute('data-theme','dark');
+        toggle.setAttribute('aria-pressed','true');
+        toggle.textContent = 'Dark';
+      } else {
+        root.removeAttribute('data-theme');
+        toggle.setAttribute('aria-pressed','false');
+        toggle.textContent = 'Light';
+      }
+    }
+
+    // initialize from localStorage or system
+    const saved = localStorage.getItem('aesthetic-theme');
+    if(saved){
+      applyTheme(saved);
+    } else {
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      applyTheme(prefersDark ? 'dark' : 'light');
+    }
+
+    toggle.addEventListener('click', () => {
+      const current = root.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      const next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      localStorage.setItem('aesthetic-theme', next);
+    });
+
+    // Accessibility: reveal focus on keyboard only
+    (function(){
+      function handleFirstTab(e) {
+        if (e.key === 'Tab') {
+          document.body.classList.add('user-is-tabbing');
+          window.removeEventListener('keydown', handleFirstTab);
+        }
+      }
+      window.addEventListener('keydown', handleFirstTab);
+    })();
+  </script>
+</body>
+</html>
